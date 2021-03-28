@@ -20,7 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Passport Authentication
 Route::post('/signup', 'AuthController@signUp');
+Route::post('/login', 'AuthController@logIn');
 
+// After Authentication
 Route::group(['prefix' => 'auth','middleware' => 'auth:api'], function() {
     // Blog
     Route::get('/blogs', 'BlogController@index');
