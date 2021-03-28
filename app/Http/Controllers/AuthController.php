@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SignUpRequest;
 use App\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function signUp(Request $request)
+    public function signUp(SignUpRequest $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -25,13 +27,9 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out!']);
     }
 
-    public function logIn(Request $request)
+    public function logIn(LoginRequest $request)
     {
-        $loginData = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
-        if(!auth()->attempt($loginData))
+        if(!auth()->attempt($request->validated()))
         {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
