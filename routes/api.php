@@ -34,6 +34,8 @@ Route::group(['prefix' => 'auth','middleware' => 'auth:api'], function() {
     Route::get('/gallery', 'GalleryController@index');
     Route::get('/gallery/create', 'GalleryController@create');
     Route::post('/gallery', 'GalleryController@store');
+    // Logout
+    Route::get('/logout', 'AuthController@logOut');
 });
 
 
