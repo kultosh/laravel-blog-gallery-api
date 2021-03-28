@@ -26,3 +26,8 @@ Route::get('/blog/{id}', 'BlogController@show');
 Route::get('/blog/edit/{id}', 'BlogController@edit');
 Route::put('/blog/{id}', 'BlogController@update');
 Route::delete('/blog/{id}', 'BlogController@destroy');
+
+// Gallery
+Route::get('/gallery', 'GalleryController@index');
+Route::get('/gallery/create', 'GalleryController@create');
+Route::post('/gallery', 'GalleryController@store');
